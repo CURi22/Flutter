@@ -1,3 +1,2 @@
-// ButtonSH
 // TextFieldSH
 // TextAreaSH

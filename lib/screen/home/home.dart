@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:untitled/style/design/component.dart';
+import 'package:untitled/style/design/foundation.dart';
 
 class Home extends StatelessWidget {
   Home({super.key});
@@ -12,6 +13,25 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
+          // ElevatedButton(
+          //   style: ElevatedButton.styleFrom(
+          //     shape: const RoundedRectangleBorder(
+          //       borderRadius: ButtonDesign.squareShape,
+          //     ),
+          //   ).merge(
+          //     ButtonStyle(
+          //       backgroundColor: ButtonDesign.primeFillColor,
+          //       foregroundColor: ButtonDesign.primeFillText,
+          //     ),
+          //   ),
+          //   onPressed: () {
+          //     print('pressed');
+          //   },
+          //   child: const Text(
+          //     'text',
+          //     style: FontGuide.buttonL,
+          //   ),
+          // ),
           Form(
             key: _formKey,
             child: Column(
