@@ -107,15 +107,15 @@ class ButtonDesign {
   );
 
   // 모양
-  static const BorderRadius squareShape = BorderRadius.zero;
-
-  static final BorderRadius roundShape = BorderRadius.circular(10);
-
   static final BorderRadius circleShape =
       BorderRadius.circular(double.infinity);
 
+  static final BorderRadius roundShape = BorderRadius.circular(10);
+
+  static const BorderRadius squareShape = BorderRadius.zero;
+
   // 텍스트 색
-  static final MaterialStateProperty<Color> primeFillText =
+  static final MaterialStateProperty<Color> primeFillTextColor =
       MaterialStateProperty.resolveWith<Color>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) {
@@ -128,7 +128,7 @@ class ButtonDesign {
     },
   );
 
-  static final MaterialStateProperty<Color> primeLineText =
+  static final MaterialStateProperty<Color> primeLineTextColor =
       MaterialStateProperty.resolveWith<Color>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) {
@@ -141,7 +141,7 @@ class ButtonDesign {
     },
   );
 
-  static final MaterialStateProperty<Color> prime2FillText =
+  static final MaterialStateProperty<Color> prime2FillTextColor =
       MaterialStateProperty.resolveWith<Color>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) {
@@ -154,7 +154,7 @@ class ButtonDesign {
     },
   );
 
-  static final MaterialStateProperty<Color> secondFillText =
+  static final MaterialStateProperty<Color> secondFillTextColor =
       MaterialStateProperty.resolveWith<Color>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) {
@@ -167,7 +167,7 @@ class ButtonDesign {
     },
   );
 
-  static final MaterialStateProperty<Color> secondLineText =
+  static final MaterialStateProperty<Color> secondLineTextColor =
       MaterialStateProperty.resolveWith<Color>(
     (Set<MaterialState> states) {
       if (states.contains(MaterialState.disabled)) {
@@ -203,12 +203,6 @@ class TextFieldDesign {
     ),
   );
 
-  static const UnderlineInputBorder enabled2Border = UnderlineInputBorder(
-    borderSide: BorderSide(
-      color: ColorScale.gray03,
-    ),
-  );
-
   static const UnderlineInputBorder focusedBorder = UnderlineInputBorder(
     borderSide: BorderSide(
       color: ColorScale.green01,
@@ -241,4 +235,54 @@ class TextFieldDesign {
 
 class TextAreaDesign {
   const TextAreaDesign();
+
+  // 외곽선
+  static final OutlineInputBorder disabledLineBorder = OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: ColorGuide.ui02,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    gapPadding: 11,
+  );
+
+  static final OutlineInputBorder enabledLineBorder = OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: ColorGuide.ui02,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    gapPadding: 11,
+  );
+
+  static final OutlineInputBorder errorLineBorder = OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: ColorGuide.inverseSupport01,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    gapPadding: 11,
+  );
+
+  static final OutlineInputBorder focusedLineBorder = OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: ColorGuide.interactive04,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    gapPadding: 11,
+  );
+
+  static final OutlineInputBorder fillBorder = OutlineInputBorder(
+    borderSide: const BorderSide(
+      color: ColorGuide.ui02,
+    ),
+    borderRadius: BorderRadius.circular(10),
+    gapPadding: 11,
+  );
+
+  // 배경색
+  static const Color lineColor = ColorGuide.field02;
+  static const Color disabledFillColor = ColorGuide.field02;
+  static const Color enabledFillColor = ColorGuide.field02;
+  static const Color errorFillColor = Color(0xffF5EEF0);
+  static const Color focusedFillColor = Color(0xffEDF1F5);
+
+// 텍스트
 }

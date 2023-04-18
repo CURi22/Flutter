@@ -4,6 +4,7 @@ import 'package:untitled/style/design/component.dart';
 
 class TextFieldSH extends StatefulWidget {
   final TextEditingController controller;
+  final bool? enabled;
   final String? error;
   final String? hint;
   final bool isPw;
@@ -14,6 +15,7 @@ class TextFieldSH extends StatefulWidget {
 
   const TextFieldSH({
     required this.controller,
+    this.enabled,
     this.error,
     this.hint,
     this.isPw = false,
@@ -123,7 +125,7 @@ class _TextFieldSH extends State<TextFieldSH> {
                   )
                 : null,
           ),
-          enabled: true,
+          enabled: widget.enabled,
           maxLength: widget.maxLength,
           obscureText: isObscureText,
           style: TextFieldDesign.inputText,
@@ -136,4 +138,98 @@ class _TextFieldSH extends State<TextFieldSH> {
   }
 }
 
-// TextAreaSH
+class TextAreaSH extends StatefulWidget {
+  final TextEditingController controller;
+  final String? error;
+  final String? hint;
+  final bool isPw;
+  final String? label;
+  final int? maxLength;
+  final void Function(String? val)? onSaved;
+  final String? Function(String? val)? validator;
+
+  const TextAreaSH({
+    required this.controller,
+    this.error,
+    this.hint,
+    this.isPw = false,
+    this.label,
+    this.maxLength,
+    this.onSaved,
+    this.validator,
+    super.key,
+  });
+
+  void onPressXHandler() {
+    controller.clear();
+  }
+
+  @override
+  State<StatefulWidget> createState() => _TextAreaSH();
+}
+
+class _TextAreaSH extends State<TextAreaSH> {
+  static bool isFieldNotEmpty = false;
+  static late bool isObscureText;
+
+  void onChangeHandler(String val) {
+    setState(() {
+      isFieldNotEmpty = val.isNotEmpty;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    isObscureText = widget.isPw;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            widget.label != null
+                ? Text(
+                    widget.label!,
+                    style: TextFieldDesign.labelText,
+                  )
+                : const SizedBox.shrink(),
+            widget.maxLength != null
+                ? Text(
+                    '${widget.controller.text.length} / ${widget.maxLength}',
+                    style: TextFieldDesign.counterText,
+                  )
+                : const SizedBox.shrink(),
+          ],
+        ),
+        TextFormField(
+          controller: widget.controller,
+          decoration: InputDecoration(
+            border: TextAreaDesign.enabledLineBorder,
+            counter: const SizedBox.shrink(),
+            disabledBorder: TextAreaDesign.disabledLineBorder,
+            errorBorder: TextAreaDesign.errorLineBorder,
+            errorStyle: TextFieldDesign.errorText,
+            errorText: widget.error,
+            filled: true,
+            fillColor: TextAreaDesign.lineColor,
+            focusedBorder: TextAreaDesign.focusedLineBorder,
+            hintText: widget.hint,
+            hintStyle: TextFieldDesign.hintText,
+          ),
+          enabled: true,
+          maxLength: widget.maxLength,
+          obscureText: isObscureText,
+          style: TextFieldDesign.inputText,
+          onChanged: onChangeHandler,
+          onSaved: widget.onSaved,
+          validator: widget.validator,
+        ),
+      ],
+    );
+  }
+}

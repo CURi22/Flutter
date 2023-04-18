@@ -9,6 +9,7 @@ class Home extends StatelessWidget {
 
   final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
   final TextEditingController controller = TextEditingController();
+  final TextEditingController controller2 = TextEditingController();
 
   void onPressHandler() {
     if (globalKey.currentState!.validate()) {
@@ -43,6 +44,15 @@ class Home extends StatelessWidget {
                   onSaved: onSaveHandler,
                   isPw: true,
                 ),
+                TextAreaSH(
+                  controller: controller2,
+                  hint: '힌트',
+                  label: '라벨',
+                  maxLength: 100,
+                  validator: onValidateHandler,
+                  onSaved: onSaveHandler,
+                  // isPw: true,
+                ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: const RoundedRectangleBorder(
@@ -51,7 +61,7 @@ class Home extends StatelessWidget {
                   ).merge(
                     ButtonStyle(
                       backgroundColor: ButtonDesign.primeFillColor,
-                      foregroundColor: ButtonDesign.primeFillText,
+                      foregroundColor: ButtonDesign.primeFillTextColor,
                     ),
                   ),
                   onPressed: onPressHandler,
